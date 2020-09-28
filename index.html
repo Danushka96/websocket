@@ -20,8 +20,8 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 10px;">
-                        <button class="btn" id="disconnectbtn" value="Disconnect" onclick="closeCon()">Disconnect</button>
-                        <input id="connect" type="submit" value="Connect" style="margin-right: 20px;">
+                        <button class="btn" id="disconnectbtn" onclick="closeCon()">Disconnect</button>
+                        <button class="btn" id="connectBtn" style="margin-right: 20px;">Connect</button>
                     </div>
                 </form>
             </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="column">
-            <div class="container">
+            <div class="container" style="height: 82vh;">
                 <div class="row" style="margin-top: 10px;">
                     <h2>Output</h2>
                     <input id="send" type="submit" value="Clear" style="margin-top: -20px;" onclick="clearLogs()">

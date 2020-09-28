@@ -10,13 +10,17 @@ function init() {
     output = document.getElementById("output");
     sendButton = document.getElementById("send");
     messageForm = document.getElementById("messageForm");
-    connectButton = document.getElementById("connect");
+    connectButton = document.getElementById("connectBtn");
     disconnectButton = document.getElementById("disconnectbtn");
     disconnectButton.disabled = true
     addressForm = document.getElementById('addressFom');
-    addressForm.addEventListener('submit', event => {
+    connectButton.addEventListener('click',event => {
         event.preventDefault();
         initWebSocket();
+    });
+    disconnectButton.addEventListener('click',event => {
+        event.preventDefault();
+        closeCon();
     })
     messageForm.addEventListener('submit', event => {
         event.preventDefault();
@@ -39,7 +43,8 @@ function getValues() {
 }
 
 function initWebSocket() {
-    var address = document.getElementById("address").value;
+    console.log("init called");
+    let address = document.getElementById("address").value;
     websocket = new WebSocket(address);
     websocket.onopen = function (evt) {
         onOpen(evt)
@@ -71,7 +76,6 @@ function onClose(evt) {
 
 function onMessage(evt) {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data + '</span>');
-    scrollToBottom();
     //websocket.close();
 }
 
@@ -89,6 +93,7 @@ function writeToScreen(message) {
     pre.style.wordWrap = "break-word";
     pre.innerHTML = message;
     output.appendChild(pre);
+    scrollToBottom();
 }
 
 function closeCon() {
