@@ -14,11 +14,11 @@ function init() {
     disconnectButton = document.getElementById("disconnectbtn");
     disconnectButton.disabled = true
     addressForm = document.getElementById('addressFom');
-    connectButton.addEventListener('click',event => {
+    connectButton.addEventListener('click', event => {
         event.preventDefault();
         initWebSocket();
     });
-    disconnectButton.addEventListener('click',event => {
+    disconnectButton.addEventListener('click', event => {
         event.preventDefault();
         closeCon();
     })

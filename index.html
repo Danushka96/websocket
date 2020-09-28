@@ -1,84 +1,86 @@
 <!DOCTYPE html>
-<meta charset="utf-8" />
+<meta charset="utf-8"/>
 <title>WebSocket Test</title>
 <script type="text/javascript" src="js/socket.js"></script>
-<link rel='stylesheet' href='css/styles.css' type='text/css' />
+<link rel='stylesheet' href='css/styles.css' type='text/css'/>
 
 <body>
-    <h2>UST WebSocket Testing tool</h2>
+<h2>UST WebSocket Testing tool</h2>
 
-    <div class="row">
-        <div class="column">
-            <div class="container">
-                <form action="" id="addressFom">
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="topic">Address</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="address" name="address" value="ws://localhost:8080/stream" placeholder="Address">
-                        </div>
+<div class="row">
+    <div class="column">
+        <div class="container">
+            <form action="" id="addressFom">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="topic">Address</label>
                     </div>
-                    <div class="row" style="margin-top: 10px;">
-                        <button class="btn" id="disconnectbtn" onclick="closeCon()">Disconnect</button>
-                        <button class="btn" id="connectBtn" style="margin-right: 20px;">Connect</button>
+                    <div class="col-75">
+                        <input type="text" id="address" name="address" value="ws://localhost:8080/stream"
+                               placeholder="Address">
                     </div>
-                </form>
-            </div>
-            <div class="container" style="margin-top:20px">
-                <form action="" id="messageForm">
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="topic">Topic</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="topic" name="topic" placeholder="Topic" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="streamId">Stream ID</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="streamId" name="streamId" placeholder="streamId" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="subscribe">Subscribe</label>
-                        </div>
-                        <div class="col-75">
-                            <select id="subscribe" name="subscribe" required>
-                              <option value="true">true</option>
-                              <option value="false">false</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="message">Message</label>
-                        </div>
-                        <div class="col-75">
-                            <textarea id="message" name="message" placeholder="Message in Json Format" style="height:200px"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <input id="send" type="submit" value="send" disabled>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="column">
-            <div class="container" style="height: 82vh;">
+                </div>
                 <div class="row" style="margin-top: 10px;">
-                    <h2>Output</h2>
-                    <input id="send" type="submit" value="Clear" style="margin-top: -20px;" onclick="clearLogs()">
+                    <button class="btn" id="disconnectbtn" onclick="closeCon()">Disconnect</button>
+                    <button class="btn" id="connectBtn" style="margin-right: 20px;">Connect</button>
                 </div>
-                <div id="output" style="margin-left: 20px; margin-bottom: 30px;overflow-y: scroll; height:400px;">
+            </form>
+        </div>
+        <div class="container" style="margin-top:20px">
+            <form action="" id="messageForm">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="topic">Topic</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="topic" name="topic" placeholder="Topic" required>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="streamId">Stream ID</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="streamId" name="streamId" placeholder="streamId" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="subscribe">Subscribe</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="subscribe" name="subscribe" required>
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="message">Message</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="message" name="message" placeholder="Message in Json Format"
+                                  style="height:200px"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <input id="send" type="submit" value="send" disabled>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="column">
+        <div class="container" style="height: 82vh;">
+            <div class="row" style="margin-top: 10px;">
+                <h2>Output</h2>
+                <input id="send" type="submit" value="Clear" style="margin-top: -20px;" onclick="clearLogs()">
+            </div>
+            <div id="output" style="margin-left: 20px; margin-bottom: 30px;overflow-y: scroll; height:400px;">
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>
