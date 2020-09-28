@@ -16,7 +16,7 @@
                             <label for="topic">Address</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="address" name="address" value="wss://echo.websocket.org" placeholder="Address">
+                            <input type="text" id="address" name="address" value="ws://localhost:8080/stream" placeholder="Address">
                         </div>
                     </div>
                     <div class="row" style="margin-top: 10px;">
@@ -70,10 +70,12 @@
         </div>
         <div class="column">
             <div class="container">
-                <h2>Output</h2>
-                <div id="output" style="margin-left: 20px; margin-bottom: 30px;">
+                <div class="row" style="margin-top: 10px;">
+                    <h2>Output</h2>
+                    <input id="send" type="submit" value="Clear" style="margin-top: -20px;" onclick="clearLogs()">
                 </div>
-                <input id="send" type="submit" value="Clear" style="margin-top: -20px;" onclick="clearLogs()">
+                <div id="output" style="margin-left: 20px; margin-bottom: 30px;overflow-y: scroll; height:400px;">
+                </div>
             </div>
         </div>
     </div>

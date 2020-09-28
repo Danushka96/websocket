@@ -1,9 +1,10 @@
-var output;
-var addressForm;
-var messageForm;
-var sendButton;
-var connectButton;
-var disconnectButton;
+let output;
+let addressForm;
+let messageForm;
+let sendButton;
+let connectButton;
+let disconnectButton;
+let websocket;
 
 function init() {
     output = document.getElementById("output");
@@ -12,11 +13,10 @@ function init() {
     connectButton = document.getElementById("connect");
     disconnectButton = document.getElementById("disconnectbtn");
     disconnectButton.disabled = true
-        // testWebSocket();
     addressForm = document.getElementById('addressFom');
     addressForm.addEventListener('submit', event => {
         event.preventDefault();
-        testWebSocket();
+        initWebSocket();
     })
     messageForm.addEventListener('submit', event => {
         event.preventDefault();
@@ -25,10 +25,10 @@ function init() {
 }
 
 function getValues() {
-    var topic = document.getElementById("topic").value
-    var stream_id = document.getElementById("streamId").value
-    var subscribe = document.getElementById("subscribe").value
-    var message = document.getElementById("message").value
+    let topic = document.getElementById("topic").value
+    let stream_id = document.getElementById("streamId").value
+    let subscribe = document.getElementById("subscribe").value
+    let message = document.getElementById("message").value
 
     message = JSON.parse(message);
     message["topic"] = topic;
@@ -38,13 +38,21 @@ function getValues() {
     doSend(JSON.stringify(message))
 }
 
-function testWebSocket() {
+function initWebSocket() {
     var address = document.getElementById("address").value;
     websocket = new WebSocket(address);
-    websocket.onopen = function(evt) { onOpen(evt) };
-    websocket.onclose = function(evt) { onClose(evt) };
-    websocket.onmessage = function(evt) { onMessage(evt) };
-    websocket.onerror = function(evt) { onError(evt) };
+    websocket.onopen = function (evt) {
+        onOpen(evt)
+    };
+    websocket.onclose = function (evt) {
+        onClose(evt)
+    };
+    websocket.onmessage = function (evt) {
+        onMessage(evt)
+    };
+    websocket.onerror = function (evt) {
+        onError(evt)
+    };
 }
 
 function onOpen(evt) {
@@ -63,6 +71,7 @@ function onClose(evt) {
 
 function onMessage(evt) {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data + '</span>');
+    scrollToBottom();
     //websocket.close();
 }
 
@@ -76,7 +85,7 @@ function doSend(message) {
 }
 
 function writeToScreen(message) {
-    var pre = document.createElement("p");
+    let pre = document.createElement("p");
     pre.style.wordWrap = "break-word";
     pre.innerHTML = message;
     output.appendChild(pre);
@@ -90,6 +99,11 @@ function closeCon() {
 function clearLogs() {
     console.log('clearing...')
     output.innerHTML = ''
+}
+
+function scrollToBottom() {
+    let messageContainer = document.getElementById('output');
+    messageContainer.scrollTop = messageContainer.scrollHeight
 }
 
 window.addEventListener("load", init, false);
